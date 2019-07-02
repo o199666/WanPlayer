@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/localFragment"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/localFragment"
+        android:name="com.wan.player.fragment.LocalFragment"
+        android:label="fragment_local"
+        tools:layout="@layout/fragment_local" />
+    <fragment
+        android:id="@+id/netFragment"
+        android:name="com.wan.player.fragment.NetFragment"
+        android:label="fragment_net"
+        tools:layout="@layout/fragment_net" />
+    <fragment
+        android:id="@+id/downloadFragment"
+        android:name="com.wan.player.fragment.DownloadFragment"
+        android:label="fragment_download"
+        tools:layout="@layout/fragment_download" />
+</navigation>

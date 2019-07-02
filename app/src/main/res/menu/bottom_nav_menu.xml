@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/localFragment"
+        android:icon="@drawable/ic_nav_local"
+        android:title="@string/menu_local" />
+    <item
+        android:id="@+id/netFragment"
+        android:icon="@drawable/ic_nav_net"
+        android:title="@string/menu_net" />
+    <item
+        android:id="@+id/downloadFragment"
+        android:icon="@drawable/ic_nav_down"
+        android:title="@string/menu_download" />
+
+</menu>
