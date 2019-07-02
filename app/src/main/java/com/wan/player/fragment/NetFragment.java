@@ -23,6 +23,12 @@ import com.wan.player.databinding.FragmentNetBinding;
  */
 public class NetFragment extends BaseFragment {
     FragmentNetBinding binding;
+    String [] cili={
+            "http://www.btakt.com/search/%E5%9C%B0%E6%96%B9-first-asc-1",//BT蚂蚁
+            "https://www.btku1.com/search-%E7%8A%AC%E5%A4%9C%E5%8F%89-0-0-1.html",//BT酷
+            "http://www.zhizhu11.com/so/%E6%97%A0%E9%97%B4%E9%81%93-first-asc-1",//蜘蛛搜索
+            "http://www.diaosisou8.com/list/%E9%98%BF%E8%90%A8%E5%BE%B7/2/time_d"//屌丝搜
+    };
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
