@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,6 +38,7 @@ public class DownloadFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-
+        downloadBinding.appTitle.titleTv.setText("下载管理");
+        downloadBinding.appTitle.titleSp.setVisibility(View.GONE);
     }
 }

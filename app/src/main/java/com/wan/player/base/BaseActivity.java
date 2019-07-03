@@ -25,17 +25,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initLogger();
         initView();
         initDate();
     }
-    public void initLogger(){
-        Logger.init(TAG)    //LOG TAG默认是PRETTYLOGGER
-                .methodCount(3)                 // 决定打印多少行（每一行代表一个方法）默认：2
-                .hideThreadInfo()               // 隐藏线程信息 默认：显示
-                .logLevel(LogLevel.FULL)        // 是否显示Log 默认：LogLevel.FULL（全部显示）
-                .methodOffset(2);                // 默认：0
-    }
+
     /**
      * 所有初始化的空间放这个里面。
      * @param

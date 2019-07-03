@@ -6,39 +6,48 @@
     <data>
 
     </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp">
-        <EditText
-            android:id="@+id/sos_et"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/sos_border"
-            android:gravity="left|center"
-            android:hint="请输入搜索关键字"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="@id/sos_sp"
-            app:layout_constraintTop_toTopOf="parent" />
-        <Spinner
-            app:layout_constraintLeft_toRightOf="@id/sos_et"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/sos_btn"
-            android:id="@+id/sos_sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/sos_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="搜索"
-            app:layout_constraintLeft_toRightOf="@id/sos_et"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="vertical">
+        <include
+            android:id="@+id/app_title"
+            layout="@layout/app_title"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/sos_et"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/sos_border"
+                android:gravity="center|left"
+                android:hint="请输入您要查找的关键词" />
+
+            <Button
+                android:background="@drawable/sos_btn_border"
+                android:layout_margin="5dp"
+                android:id="@+id/sos_btn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:textColor="@color/font_fff"
+                android:layout_weight="4"
+                android:text="搜索"
+                />
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recy_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
 </layout>
  

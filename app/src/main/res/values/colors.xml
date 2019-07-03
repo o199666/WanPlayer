@@ -13,4 +13,5 @@
     <color name="font_fff">#FFFFFF</color>
     <!--线条-->
     <color name="divider">#BDBDBD</color>
+    <color name="yellow">#FFEB3B</color>
 </resources>
