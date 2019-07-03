@@ -44,8 +44,6 @@ import java.util.List;
 public class NetFragment extends BaseFragment {
     FragmentNetBinding binding;
     NetDataViewModel viewModel;
-
-
     String [] ciliType={
             "磁力一",//BT蚂蚁
             "磁力二",//BT酷
@@ -98,7 +96,7 @@ public class NetFragment extends BaseFragment {
     public class MyThread extends Thread {
         @Override
         public void run() {
-            viewModel.queryNetData(binding.sosEt.getText().toString().trim());
+            viewModel.queryNetDataList(binding.sosEt.getText().toString().trim());
         }
     }
 
