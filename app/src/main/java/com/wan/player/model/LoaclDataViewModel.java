@@ -18,31 +18,33 @@ import static com.wan.player.utlis.FilesUtil.getVideoFile;
 
 public class LoaclDataViewModel extends ViewModel {
     private MutableLiveData<List<LocalDataBean>> data;
+
     public MutableLiveData<List<LocalDataBean>> getNetData() {
         if (null == data) {
             data = new MutableLiveData<>();
         }
-
+        getFlie();
         return data;
     }
-    String[] flieType={"MP4","flv","Mov","M3U8","Ts","RMVB","3GP","MPEG","AVI","mkv"};
+
+    String[] flieType = {"MP4", "flv", "Mov", "M3U8", "Ts", "RMVB", "3GP", "MPEG", "AVI", "mkv"};
 
     File sd = new File(Environment.getExternalStorageDirectory().getPath());
-public void getFlie(){
-    Log.d("获取的路径",sd+"");
-    FileThread thread=new FileThread();
-    thread.start();
 
-}
+    public void getFlie() {
+        Log.d("获取的路径", sd + "");
+        FileThread thread = new FileThread();
+        thread.start();
 
-public class FileThread  extends Thread{
-    @Override
-    public void run() {
-        super.run();
-        List<LocalDataBean> localDataBeans=new ArrayList<>();
-        data.postValue(getVideoFile(localDataBeans,sd));
     }
-}
+    public class FileThread extends Thread {
+        @Override
+        public void run() {
+            super.run();
+            List<LocalDataBean> localDataBeans = new ArrayList<>();
+            data.postValue(getVideoFile(localDataBeans, sd));
+        }
+    }
 }
 
 

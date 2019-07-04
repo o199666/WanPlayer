@@ -2,7 +2,6 @@ package com.wan.player.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,27 +10,17 @@ import android.widget.ArrayAdapter;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.Observable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.orhanobut.logger.Logger;
-import com.wan.player.NetDataAdapter;
+import com.wan.player.adapter.NetDataAdapter;
 import com.wan.player.R;
 import com.wan.player.base.BaseFragment;
 import com.wan.player.bean.NetDataBean;
 import com.wan.player.databinding.FragmentNetBinding;
 import com.wan.player.model.NetDataViewModel;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -93,6 +82,7 @@ public class NetFragment extends BaseFragment {
                 android.R.layout.simple_spinner_dropdown_item,ciliType);
         binding.appTitle.titleSp.setAdapter(spinnerAdapter);
     }
+
     public class MyThread extends Thread {
         @Override
         public void run() {

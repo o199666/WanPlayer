@@ -11,7 +11,9 @@
     <color name="font_context">#757575</color>
     <!---->
     <color name="font_fff">#FFFFFF</color>
+    <color name="bg_fff">#FFFFFF</color>
     <!--线条-->
     <color name="divider">#BDBDBD</color>
     <color name="yellow">#FFEB3B</color>
+    <color name="bg">#E0E0E0</color>
 </resources>

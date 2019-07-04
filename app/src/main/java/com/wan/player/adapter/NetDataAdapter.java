@@ -1,15 +1,15 @@
-package com.wan.player;
+package com.wan.player.adapter;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.wan.player.BR;
+import com.wan.player.R;
 import com.wan.player.bean.NetDataBean;
 
 import java.util.List;
