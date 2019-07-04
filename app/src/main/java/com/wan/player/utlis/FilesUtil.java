@@ -55,7 +55,7 @@ public   class FilesUtil{
                             || name.equalsIgnoreCase(".ra")
                             || name.equalsIgnoreCase(".ndivx")
                             || name.equalsIgnoreCase(".xvid")) {
-                        LocalDataBean video = new LocalDataBean(file.getName(),file.getName(),file.getAbsolutePath(),file.getAbsolutePath(),getVideoThumbNail(file.getAbsolutePath()));
+                        LocalDataBean video = new LocalDataBean(file.getName(),file.getName(),file.getAbsolutePath(),file.getAbsolutePath());
                         file.getUsableSpace();
 
                         Log.i("tga","name"+video.getFilePtah());
@@ -91,34 +91,7 @@ public   class FilesUtil{
         }
         return newVideos;
     }
-    /***
-     * 根据播放路径设置缩略图
-     * @param filePath 视频资源的路径
-     * @return 返回缩略图的Bitmap对象
-     */
-    public static Bitmap getVideoThumbNail(String filePath) {
-        Bitmap bitmap = null;
-        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
-        try {
-            retriever.setDataSource(filePath);
-            bitmap = retriever.getFrameAtTime();
-        }
-        catch(IllegalArgumentException e) {
-            e.printStackTrace();
-        }
-        catch (RuntimeException e) {
-            e.printStackTrace();
-        }
-        finally {
-            try {
-                retriever.release();
-            }
-            catch (RuntimeException e) {
-                e.printStackTrace();
-            }
-        }
-        return bitmap;
-    }
+
 
 
 

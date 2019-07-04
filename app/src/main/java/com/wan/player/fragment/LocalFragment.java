@@ -47,7 +47,6 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
  */
 public class LocalFragment extends BaseFragment {
     FragmentLocalBinding binding;
-    String[] flieType={"MP4","flv","Mov","M3U8","Ts","RMVB","3GP","MPEG","AVI"};
     LoaclDataViewModel localViewModel;
     @Nullable
     @Override
@@ -63,48 +62,16 @@ public class LocalFragment extends BaseFragment {
                 binding.localRecyc.setAdapter(new LocalDataAdapter(localDataBeans));
             }
         });
-
         return view;
     }
     @Override
     protected void netData() {
-//        localViewModel.getFlie();
-    }
-    public static boolean sdCardIsAvailable() {
-        //首先判断存储是否可用
-        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            File sd = new File(Environment.getExternalStorageDirectory().getPath());
-           //   getRootDirectory: /system
-           //   getDataDirectory: /data
-           //   getExternalStorageState: /mounted  安装
-           //   getExternalStorageDirectory: /storage/emulated/0  安装
 
-            Log.e("qq", "sd = " + sd);//sd = /storage/emulated/0
-            return sd.canWrite();
-        } else {
-            return false;
-        }
     }
     @Override
     protected void initView() {
-        binding.appTitle.titleTv.setText("本地视频");
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_dropdown_item,flieType);
-        binding.appTitle.titleSp.setAdapter(spinnerAdapter);
+
     }
 
-    public void getSdDir(){
-        File sd = new File(Environment.getExternalStorageDirectory().getPath());
-        Log.d("SD",sd.getPath());
-        if (sd.exists()){
-            List<LocalDataBean> list=new ArrayList<>();
-            FilesUtil.getVideoFile(list,sd);
-            for (int i = 0; i <list.size() ; i++) {
-                Log.d("SDs",list.get(i).getFileName());
-            }
-        }else{
-            Log.d("sd4",sd+"");
 
-        }
-    }
 }

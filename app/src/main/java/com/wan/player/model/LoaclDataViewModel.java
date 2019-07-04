@@ -27,7 +27,6 @@ public class LoaclDataViewModel extends ViewModel {
         return data;
     }
 
-    String[] flieType = {"MP4", "flv", "Mov", "M3U8", "Ts", "RMVB", "3GP", "MPEG", "AVI", "mkv"};
 
     File sd = new File(Environment.getExternalStorageDirectory().getPath());
 
