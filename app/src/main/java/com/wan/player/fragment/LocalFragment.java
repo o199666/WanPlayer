@@ -15,13 +15,20 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.wan.player.MainActivity;
 import com.wan.player.R;
 import com.wan.player.base.BaseFragment;
+import com.wan.player.bean.LocalDataBean;
+import com.wan.player.bean.NetDataBean;
 import com.wan.player.databinding.FragmentLocalBinding;
+import com.wan.player.model.LoaclDataViewModel;
+import com.wan.player.model.NetDataViewModel;
 
 import java.io.File;
+import java.util.List;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
@@ -35,27 +42,35 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 public class LocalFragment extends BaseFragment {
     FragmentLocalBinding binding;
     String[] flieType={"MP4","flv","Mov","M3U8","Ts","RMVB","3GP","MPEG","AVI"};
+    LoaclDataViewModel localViewModel;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_local, container, false);
         View view = binding.getRoot();
+        localViewModel= ViewModelProviders.of(this).get(LoaclDataViewModel.class);
+        localViewModel.getNetData().observe(this, new Observer<List<LocalDataBean>>() {
+            @Override
+            public void onChanged(List<LocalDataBean> localDataBeans) {
+
+            }
+        });
         return view;
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void netData() {
-       boolean a= sdCardIsAvailable();
-        Log.e("qq", "boolean = " + a);//sd = /storage/emulated/0
+        localViewModel.getFlie();
 
     }
     public static boolean sdCardIsAvailable() {
         //首先判断存储是否可用
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            File sd = new File(Environment.getExternalStorageState());
+            File sd = new File(Environment.getExternalStorageDirectory().getPath());
            //   getRootDirectory: /system
            //   getDataDirectory: /data
            //   getExternalStorageState: /mounted  安装
+           //   getExternalStorageDirectory: /storage/emulated/0  安装
 
             Log.e("qq", "sd = " + sd);//sd = /storage/emulated/0
             return sd.canWrite();

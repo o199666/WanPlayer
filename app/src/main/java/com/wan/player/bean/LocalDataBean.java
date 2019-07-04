@@ -6,12 +6,7 @@ public class LocalDataBean {
     private String fileSize;
     private String filePtah;
 
-    public LocalDataBean(String fileName, String fileTime, String fileSize, String filePtah) {
-        this.fileName = fileName;
-        this.fileTime = fileTime;
-        this.fileSize = fileSize;
-        this.filePtah = filePtah;
-    }
+
 
     public String getFileName() {
         return fileName;
