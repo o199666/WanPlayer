@@ -1,48 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/tools">
-    <data>
-        <variable
-            name="localdata"
-            type="com.wan.player.bean.LocalDataBean" />
-    </data>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
-    android:background="@color/bg_fff"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
         android:layout_marginTop="2dp"
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="100dp">
         <ImageView
             android:id="@+id/local_iv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            app:filePtah="@{localdata.filePtah}"
             app:layout_constraintDimensionRatio="w,1.2:1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <TextView
             android:layout_marginTop="5dp"
-            android:padding="2dp"
+            android:layout_marginRight="10dp"
             android:id="@+id/localtitle_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center|left"
             android:textSize="@dimen/text_size_16sp"
-            android:text="@{localdata.fileName}"
-            android:maxLines="2"
-            android:ellipsize="end"
             android:textColor="@color/font_title"
             app:layout_constraintLeft_toRightOf="@id/local_iv"
             app:layout_constraintTop_toTopOf="parent" />
         <TextView
+            android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
             android:id="@+id/localsize_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center|left"
+            android:textSize="@dimen/text_size_14sp"
             android:background="@drawable/sos_btn_text"
-            android:text="@{localdata.fileSize}"
             app:layout_constraintLeft_toRightOf="@id/local_iv"
             app:layout_constraintTop_toBottomOf="@id/localtitle_tv" />
         <TextView
@@ -51,8 +44,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center|left"
+            android:textSize="@dimen/text_size_14sp"
             android:background="@drawable/sos_btn_text"
-            android:text="@{localdata.fileTime}"
             app:layout_constraintLeft_toRightOf="@id/local_iv"
             app:layout_constraintTop_toBottomOf="@id/localsize_tv" />
 
@@ -65,5 +58,5 @@
         <!--app:layout_constraintHorizontal_weight="1" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+
  

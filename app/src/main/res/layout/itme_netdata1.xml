@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <data>
-        <variable
-            name="netdata"
-            type="com.wan.player.bean.NetDataBean" />
-    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@color/bg_fff"
         android:layout_marginTop="2dp"
         android:layout_width="match_parent"
@@ -14,6 +9,7 @@
         android:orientation="vertical"
         android:padding="5dp"
         >
+
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -53,5 +49,5 @@
             android:background="@drawable/sos_btn_border"
             android:layout_height="wrap_content" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+
  

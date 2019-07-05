@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
+import static com.wan.player.bean.LocalDataBean.getVideoThumbNail;
 
 public   class FilesUtil{
 
@@ -55,9 +56,8 @@ public   class FilesUtil{
                             || name.equalsIgnoreCase(".ra")
                             || name.equalsIgnoreCase(".ndivx")
                             || name.equalsIgnoreCase(".xvid")) {
-                        LocalDataBean video = new LocalDataBean(file.getName(),file.getName(),file.getAbsolutePath(),file.getAbsolutePath());
+                        LocalDataBean video = new LocalDataBean(file.getName(),file.getName(),file.getAbsolutePath(),file.getAbsolutePath(),getVideoThumbNail(file.getAbsolutePath()));
                         file.getUsableSpace();
-
                         Log.i("tga","name"+video.getFilePtah());
                         list.add(video);
                         return true;

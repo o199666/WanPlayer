@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,8 +15,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.wan.player.adapter.NetDataAdapter;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.wan.player.R;
+import com.wan.player.adapter.NetDataAdapter1;
 import com.wan.player.base.BaseFragment;
 import com.wan.player.bean.NetDataBean;
 import com.wan.player.databinding.FragmentNetBinding;
@@ -50,10 +53,15 @@ public class NetFragment extends BaseFragment {
             @Override
             public void onChanged(List<NetDataBean> netDataBeans) {
                 binding.recyView.setLayoutManager(new LinearLayoutManager( binding.recyView.getContext(), LinearLayoutManager.VERTICAL,false));
-                binding.recyView.setAdapter(new NetDataAdapter(netDataBeans));
+                binding.recyView.setAdapter(new NetDataAdapter1(netDataBeans,getActivity()));
             }
         });
-
+        binding.recyView.addOnItemTouchListener(new OnItemChildClickListener() {
+            @Override
+            public void onSimpleItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                Toast.makeText(getActivity(), "下载了"+position, Toast.LENGTH_SHORT).show();
+            }
+        });
         return view;
     }
 

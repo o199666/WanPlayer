@@ -8,22 +8,32 @@ import androidx.databinding.BindingAdapter;
 
 import com.bumptech.glide.Glide;
 
-public class LocalDataBean {
+import java.io.Serializable;
+
+public class LocalDataBean implements Serializable {
     private String fileName;
     private String fileTime;
     private String fileSize;
     private String filePtah;
+    private Bitmap fileImag;
 
-    public LocalDataBean(String fileName, String fileTime, String fileSize, String filePtah) {
+    public Bitmap getFileImag() {
+        return fileImag;
+    }
+
+    public void setFileImag(Bitmap fileImag) {
+        this.fileImag = fileImag;
+    }
+
+    public LocalDataBean(String fileName, String fileTime, String fileSize, String filePtah, Bitmap fileImag) {
         this.fileName = fileName;
         this.fileTime = fileTime;
         this.fileSize = fileSize;
         this.filePtah = filePtah;
+        this.fileImag = fileImag;
     }
-    @BindingAdapter("bind:filePtah")
-    public static void loadInternetImage(ImageView iv, String filePtah) {
-        Glide.with(iv.getContext()).load(getVideoThumbNail(filePtah)).into(iv);
-    }
+
+
     /***
      * 根据播放路径设置缩略图
      * @param filePath 视频资源的路径
@@ -81,7 +91,6 @@ public class LocalDataBean {
     public String getFilePtah() {
         return filePtah;
     }
-
     public void setFilePtah(String filePtah) {
         this.filePtah = filePtah;
     }

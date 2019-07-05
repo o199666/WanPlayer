@@ -53,7 +53,10 @@ public class NetDataViewModel extends ViewModel {
             //获取标题
             Elements lie=wall.getElementsByAttributeValue("class","search-item");
             Elements lianjie=wall.getElementsByAttributeValue("class","item-bar");
-
+            Elements xiayiye=wall.getElementsByAttributeValue("class","bottom-pager");
+            for (int i = 0; i <xiayiye.size() ; i++) {
+                Log.d(TAG, "下一页: "+lianjie.get(i).select("a[href]").text());
+            }
             //打印出标题
             for (int i = 0; i < lie.size(); i++) {
                 Log.d(TAG, "queryNetDataList: "+lie.get(i).select("a[href]").text());

@@ -1,42 +1,33 @@
 package com.wan.player.fragment;
 
 import android.annotation.SuppressLint;
-import android.os.Build;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
-import android.renderscript.ScriptGroup;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.wan.player.MainActivity;
+import com.bumptech.glide.Glide;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.wan.player.R;
-import com.wan.player.adapter.LocalDataAdapter;
-import com.wan.player.adapter.NetDataAdapter;
+import com.wan.player.activity.PlayActivity;
+import com.wan.player.adapter.LocalDataAdapter1;
 import com.wan.player.base.BaseFragment;
 import com.wan.player.bean.LocalDataBean;
-import com.wan.player.bean.NetDataBean;
 import com.wan.player.databinding.FragmentLocalBinding;
 import com.wan.player.model.LoaclDataViewModel;
-import com.wan.player.model.NetDataViewModel;
-import com.wan.player.utlis.FilesUtil;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
-import static androidx.constraintlayout.widget.Constraints.TAG;
+import cn.jzvd.Jzvd;
+import cn.jzvd.JzvdStd;
 
 /**
  * Created by CWJ on 2019/7/2.
@@ -48,6 +39,7 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 public class LocalFragment extends BaseFragment {
     FragmentLocalBinding binding;
     LoaclDataViewModel localViewModel;
+    LocalDataAdapter1 adapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,9 +49,8 @@ public class LocalFragment extends BaseFragment {
         localViewModel.getNetData().observe(this, new Observer<List<LocalDataBean>>() {
             @SuppressLint("WrongConstant")
             @Override
-            public void onChanged(List<LocalDataBean> localDataBeans) {
-                binding.localRecyc.setLayoutManager(new LinearLayoutManager( binding.localRecyc.getContext(), LinearLayoutManager.VERTICAL,false));
-                binding.localRecyc.setAdapter(new LocalDataAdapter(localDataBeans));
+            public void onChanged(  List<LocalDataBean> localDataBeans) {
+                setLocalPlay(localDataBeans);
             }
         });
         return view;
@@ -71,6 +62,22 @@ public class LocalFragment extends BaseFragment {
     @Override
     protected void initView() {
 
+    }
+
+    @SuppressLint("WrongConstant")
+    public void setLocalPlay(final List<LocalDataBean> localDataBeans){
+        binding.localRecyc.setLayoutManager(new LinearLayoutManager( binding.localRecyc.getContext(), LinearLayoutManager.VERTICAL,false));
+        adapter=  new LocalDataAdapter1(localDataBeans,getActivity());
+        adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        binding.localRecyc.setAdapter(adapter);
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent=new Intent(getActivity(), PlayActivity.class);
+                intent.putExtra("localfile",localDataBeans.get(position));
+                startActivity(intent);
+            }
+        });
     }
 
 
